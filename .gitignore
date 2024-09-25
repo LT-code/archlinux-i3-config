@@ -1,0 +1,36 @@
+/*
+!.gitignore
+
+!.bash_profile
+!.bashrc*
+!.Xresources
+!.vimrc
+!.zshrc
+!.bash_git
+!.xinitrc
+!.Xmodmap
+
+# all config files
+!.ssh/
+.ssh/*
+!.ssh/config
+!.config/
+!.screenlayout/
+
+.config/*/
+!.config/i3/
+!.config/alacritty/
+!.config/i3blocks
+.config/i3blocks/scripts/current_redshift
+!.config/i3lock
+!.config/dunst
+!.config/rofi
+!.config/gtk-3.0/
+!.config/mimeapps.list
+!.config/Thunar/
+!.config/termite/
+!.config/alacritty/
+
+# browser - firefox
+# nvim
+!.config/nvim/

@@ -1,0 +1,37 @@
+[Default Applications]
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/geo=firefox.desktop
+x-scheme-handler/discord-446678719294210049=discord-446678719294210049.desktop
+image/png=viewnior.desktop;
+image/jpg=viewnior.desktop;
+image/jpeg=viewnior.desktop;
+application/pdf=firefox.desktop
+text/plain=org.gnome.gedit.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-OU9UT1.desktop
+message/rfc822=userapp-Thunderbird-OU9UT1.desktop
+x-scheme-handler/mid=userapp-Thunderbird-OU9UT1.desktop
+x-scheme-handler/webcal=userapp-Thunderbird-V6GVT1.desktop
+text/calendar=userapp-Thunderbird-V6GVT1.desktop
+application/x-extension-ics=userapp-Thunderbird-V6GVT1.desktop
+x-scheme-handler/webcals=userapp-Thunderbird-V6GVT1.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/https=org.gnome.Epiphany.desktop;firefox.desktop;firefox.desktop
+application/pdf=firefox.desktop;
+text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp=firefox.desktop;
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+image/png=viewnior.desktop;
+image/jpg=viewnior.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-OU9UT1.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-OU9UT1.desktop;
+x-scheme-handler/webcal=userapp-Thunderbird-V6GVT1.desktop;
+x-scheme-handler/webcals=userapp-Thunderbird-V6GVT1.desktop;
+image/svg+xml=viewnior.desktop;
+text/html=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
+
+[Added Associations]
+image/jpeg=gimp.desktop;

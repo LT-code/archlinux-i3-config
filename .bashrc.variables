@@ -1,0 +1,48 @@
+################################################################
+#  ALIAS
+################################################################
+alias couleurEcran='redshift &'
+alias disable-screen-saver="xset s off -dpms"
+
+# gestion fichier
+alias ls='ls --color=auto'
+alias ll='ls -l --color=auto'
+alias lla='ls -la --color=auto'
+alias m='make'
+alias wifi='sudo sh ~/commande/wifi/wifi.sh'
+junk() { mv "$@" ~/.trash/; }
+alias lg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+
+alias touchpad-enable='xinput set-prop 12 "Device Enabled" 1'
+alias touchpad-disable='xinput set-prop 12 "Device Enabled" 0'
+
+alias android-search='arp -a -n'
+alias android-screen='scrcpy -b1M -m600'
+alias android-connect='adb connect' # ajouter l'IP de l'appareil ip:port 10.0.1.52
+alias android='android-file-transfer'
+
+alias tor-console='torify -P 9150 xterm -fg green & exit'
+alias ippublic='curl ifconfig.me'
+
+# demarage / eteindre
+alias reboot='shutdown -r now'
+alias stop='shutdown now'
+
+# ssh / sftp
+alias ssh="TERM=xterm-256color $(which ssh)"
+alias tor-proxy="proxychains -q -f /etc/proxychains.tor.conf"
+alias tor-proxy-ssh="proxychains -q -f /etc/proxychains.tor.conf ssh -o PasswordAuthentication=yes -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no"
+
+alias reilio='rslsync --config .config/rslsync/rslsync.conf'
+
+alias faster_pacman='sudo reflector --verbose --latest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias pacman_package_size="LC_ALL=C pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h"
+
+################################################################
+#  Var
+################################################################
+export ANDROID_HOME="~/Android/Sdk"
+export SSH_AUTH_SOCK="/tmp/keeagent.sock"
+export EDITOR="nvim"
+export ERL_AFLAGS="-kernel shell_history enabled"
+export TERM="xterm-256color"

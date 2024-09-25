@@ -1,0 +1,123 @@
+icons_format = "<span font='11'>{icon}</span>"
+
+[theme]
+theme = "solarized-dark"
+[theme.overrides]
+idle_bg = "#2ab392"
+idle_fg = "#000000"
+separator = "<span font='14'></span>"
+
+[icons]
+icons = "awesome6"
+
+[[block]]
+block = "custom"
+command = "perl ~/.config/i3blocks/script/mediaplayer"
+hide_when_empty = true
+interval = 5
+signal = 11
+json = true
+[block.theme_overrides]
+#idle_bg = "#1dd05d"
+#idle_fg = "#000000"
+info_bg = "#1dd05d"
+info_fg = "#000000"
+idle_bg = "#2ab392"
+idle_fg = "#000000"
+
+#[[block]]
+#block = "music"
+#format = " $play {$combo.str(max_w:45) |} "
+#error_format = ""
+#error_interval = 5
+##interval = 20
+##format = " $icon {$combo.str(max_w:45) $prev $play $next |}"
+#[block.theme_overrides]
+#info_bg = "#1dd05d"
+#info_fg = "#000000"
+#idle_bg = "#6c9dab"
+#idle_fg = "#000000"
+
+[[block]]
+block = "docker"
+interval = 2
+format = " $icon $running/$total "
+[block.theme_overrides]
+idle_bg = "#252628"
+idle_fg = "#f9f9f9"
+
+[[block]]
+block = "battery"
+if_command = "test -e /sys/class/power_supply/BAT0"
+format = " $icon $percentage - $power - $time "
+warning = 15
+critical = 7
+[block.theme_overrides]
+info_bg = "#2ab392"
+info_fg = "#000000"
+good_bg = "#2ab392"
+good_fg = "#000000"
+warning_bg = "#ffd700"
+warning_fg = "#000000"
+critical_bg = "#ff0000"
+critical_fg = "#000000"
+
+[[block]]
+block = "custom"
+command = "echo Redshift $(sh ~/.config/i3blocks/script/redshift.sh)"
+interval = "once"
+[[block.click]]
+button = "middle"
+action = "echo Redshift $(sh ~/.config/i3blocks/script/redshift.sh)"
+[block.theme_overrides]
+idle_bg = "#252628"
+idle_fg = "#f9f9f9"
+
+#[[block]]
+#block = "custom"
+#command = "echo \uf185 $(sh ~/.config/i3blocks/script/backlight.sh)"
+[[block]]
+signal = 9
+block = "xrandr"
+format = " $icon $brightness "
+interval = "once"
+
+
+[[block]]
+block = "sound"
+signal = 10
+[block.theme_overrides]
+idle_bg = "#252628"
+idle_fg = "#f9f9f9"
+
+[[block]]
+block = "time"
+interval = 5
+format = " $icon $timestamp.datetime(f:'%A %d/%m %R', l:fr_FR) "
+
+[[block]]
+block = "custom"
+command = "echo \uf019 $(.config/i3blocks/script/arch-update.sh)"
+error_format = "Unable to get updates"
+error_interval = 60
+interval = 3600
+[[block.click]]
+button = "middle"
+action = "uxterm -e 'yay'"
+[block.theme_overrides]
+idle_bg = "#252628"
+idle_fg = "#f9f9f9"
+
+#[[block]]
+#block = "weather"
+#format = " $icon $weather ($location) $temp, $wind m/s $direction "
+#[block.service]
+#name = "openweathermap"
+#api_key = "XXX"
+#city_id = "2988507"
+#units = "metric"
+
+[[block]]
+block = "keyboard_layout"
+driver = "setxkbmap"
+interval = 15

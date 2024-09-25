@@ -1,0 +1,1 @@
+proxychains -q -f /etc/proxychains.infratest.conf ssh -o RemoteCommand=sed -e s#^.*PS1.*#PS1=\'\033[0;31mPROD \u@\h>\033[0m \'# .bashrc

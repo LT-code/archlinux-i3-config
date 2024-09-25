@@ -1,0 +1,39 @@
+##############################################################
+# MPV - youtube
+##############################################################
+function yt() {
+    mpv --ytdl-format=bestaudio ytdl://ytsearch:"$@"
+}
+
+##############################################################
+# QEMU
+##############################################################
+function qemu-run-vm() {
+qemu-system-x86_64 \
+        -nodefaults \
+        -enable-kvm \
+        -rtc clock=host,base=localtime \
+        -boot order=d \
+        -m 10G \
+	-cpu host,kvm=off \
+	-nic user,hostfwd=tcp::10022-:22 \
+        -vga vmware \
+        -smp 8,sockets=1,cores=8,threads=1 \
+        -machine type=q35,accel=kvm \
+        -device intel-iommu \
+	-drive l2-cache-size=4194304,refcount-cache-size=2621442,format=qcow2,file=$1
+}
+	#-netdev type=tap,id=net0,ifname=vmtap0,vhost=on \
+
+##############################################################
+# OTHER
+##############################################################
+function loveu() {
+	while true; do echo "I LOVE YOU <3" | lolcat;  sleep 0.3; done
+}
+
+convert_opensshprivkey_to_rsaprivkey() {
+	ssh-keygen -p -N "" -m pem -f "$1"
+}
+
+#see for other functions .config/fish/functions/bass.fish
