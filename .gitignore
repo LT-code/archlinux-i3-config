@@ -30,7 +30,6 @@
 !.config/Thunar/
 !.config/termite/
 !.config/alacritty/
-
-# browser - firefox
-# nvim
+!.config/fish/config.fish
 !.config/nvim/
+.config/nvim/lazy-lock.json

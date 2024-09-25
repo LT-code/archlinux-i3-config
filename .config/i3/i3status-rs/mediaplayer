@@ -1,0 +1,66 @@
+#!/usr/bin/env perl
+
+use Time::HiRes qw(usleep);
+use Env qw(BLOCK_INSTANCE);
+
+use constant DELAY => 50; # Delay in ms to let network-based players (spotify) reflect new data.
+use constant SPOTIFY_STR => 'spotify';
+
+my @metadata = ();
+my $player_arg = "";
+
+if ($#ARGV > -1) {
+	$BLOCK_INSTANCE = $ARGV[0];
+}
+if (!$BLOCK_INSTANCE) {
+    $playerctl_array = qx(playerctl -l | head -n 1);
+    $BLOCK_INSTANCE = $playerctl_array;
+}
+
+$first_print = " ";
+if ($BLOCK_INSTANCE) {
+    $player_arg = "--player='$BLOCK_INSTANCE'";
+    if($BLOCK_INSTANCE eq SPOTIFY_STR) {
+        $first_print = " ";
+    }
+}
+
+
+sub playerctl {
+    if ($BLOCK_INSTANCE eq 'spotify') {
+	usleep(1000);
+    }
+    my $artist = qx(playerctl $player_arg metadata artist);
+    chomp $artist;
+    # exit status will be nonzero when playerctl cannot find your player
+    if($? || $artist eq '(null)') {
+    	print("{\"state\": \"Idle\", \"text\": \"\"}");
+	exit(0);
+    }
+
+    push(@metadata, $artist) if $artist;
+
+    my $title = qx(playerctl $player_arg metadata title);
+    exit(0) if $? || $title eq '(null)';
+
+    push(@metadata, $title) if $title;
+
+    my $tmp_status = qx(playerctl $player_arg status);
+    if ($tmp_status =~ /Playing/) {
+	$status = "Info" ;
+    } else {
+	$status = "Idle";
+    };
+
+    $data = ((($first_print . join(" - ", @metadata)) =~ s/&/&amp;/r) =~ s/>/&gt;/r) =~ s/</&lt;/r;
+    $data =~ tr/\n//d;
+    $data = $data =~ s/"/\\"/r;
+    $trunced_data = substr( $data, 0, 50 );
+    if(length($data) > 50) {
+	    $trunced_data = "$trunced_data..."
+    }
+    print("{\"state\": \"$status\", \"text\": \"$trunced_data\"}") if @metadata;
+}
+
+playerctl
+print("\n");

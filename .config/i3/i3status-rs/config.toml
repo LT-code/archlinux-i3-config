@@ -12,7 +12,7 @@ icons = "awesome6"
 
 [[block]]
 block = "custom"
-command = "perl ~/.config/i3blocks/script/mediaplayer"
+command = "perl ~/.config/i3/i3status-rs/mediaplayer"
 hide_when_empty = true
 interval = 5
 signal = 11
@@ -38,10 +38,16 @@ idle_fg = "#000000"
 #idle_bg = "#6c9dab"
 #idle_fg = "#000000"
 
+#[[block]]
+#block = "docker"
+#interval = 2
+#format = " $icon $running/$total "
+
 [[block]]
-block = "docker"
-interval = 2
-format = " $icon $running/$total "
+block = "custom"
+command = "xrandr --listmonitors | tail -n+2 | tr '+' ' ' | cut -d' ' -f 4 | tr '\n' ' '"
+interval = "once"
+signal = 4
 [block.theme_overrides]
 idle_bg = "#252628"
 idle_fg = "#f9f9f9"
