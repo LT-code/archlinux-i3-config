@@ -1,14 +1,47 @@
 -- This file needs to have same structure as nvconfig.lua 
--- https://github.com/NvChad/ui/blob/v2.5/lua/nvconfig.lua
+-- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
+-- Please read that file to know all available options :( 
 
-local highlights = require "custom.highlights"
 ---@type ChadrcConfig
+
+local overrides = require("custom.overrides")
+
 local M = {}
+
+M.base46 = {
+	theme = "onedark",
+
+	-- hl_override = {
+	-- 	Comment = { italic = true },
+	-- 	["@comment"] = { italic = true },
+	-- },
+}
+
+M.mason = {
+  pkgs = {
+    "lua-language-server",
+    "css-lsp",
+    "html-lsp",
+    "elixir-ls",
+    "emmet-ls",
+    "ruby-lsp",
+    "json-lsp",
+    "yaml-language-server",
+    "yamlfmt",
+    "prettier",
+    "eslint-lsp",
+    "shfmt",
+    "shellcheck",
+    "phpactor",
+    "cmake-language-server",
+    "clangd"
+  }
+}
 
 M.ui = {
   --theme = "tokyodark",
-  hl_override = highlights.override,
-  hl_add = highlights.add,
+  hl_override = overrides.highlights.override,
+  hl_add = overrides.highlights.add,
   statusline = {
     theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
 
@@ -40,15 +73,6 @@ M.ui = {
   --     )
   --   end,
   -- },
-}
-
-M.base46 = {
-	theme = "onedark",
-
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
 }
 
 return M

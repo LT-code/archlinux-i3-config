@@ -3,7 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
-local servers = { "clangd", "yamlls", "jsonls", "phpactor", "eslint", "html", "cssls", "erlangls", "ruby_lsp", "jdtls"}
+local servers = { "clangd", "cmake", "yamlls", "jsonls", "phpactor", "eslint", "html", "cssls", "erlangls", "ruby_lsp", "jdtls"}
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -85,3 +85,4 @@ lspconfig.elixirls.setup {
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 }
+

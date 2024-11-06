@@ -25,26 +25,6 @@ M.treesitter = {
   }
 }
 
-M.mason = {
-  ensure_installed = {
-    "lua-language-server",
-    "css-lsp",
-    "html-lsp",
-    "elixir-ls",
-    "emmet-ls",
-    "ruby-lsp",
-    "json-lsp",
-    "yaml-language-server",
-    "yamlfmt",
-    "prettier",
-    "eslint-lsp",
-    "shfmt",
-    "shellcheck",
-    "phpactor"
-    --"jdtls@1.38.0"
-  }
-}
-
 M.nvimtree = {
   diagnostics = {
     enable = true,
@@ -68,4 +48,17 @@ M.nvimtree = {
   },
 }
 
+M.highlights = {
+  add = {
+    NvimTreeOpenedFolderName = { fg = "green", bold = true },
+  },
+  override = {
+    Comment = {
+      italic = true,
+    },
+  }
+}
+
+
 return M
+
