@@ -41,5 +41,7 @@ size = 10.0
 [font.normal]
 family = "JetBrainsMonoNL NF"
 
-[shell]
-program = "/bin/fish"
+[terminal]
+
+[terminal.shell]
+program = "/bin/zsh"

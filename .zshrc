@@ -76,6 +76,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+source .bashrc.functions
+source .bashrc.variables
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -102,8 +105,24 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+DEFAULT_USER="retzs64"
 
 customize_agnoster() {
-  prompt_segment 'red' '' ' ⚙ ⚡⚡⚡ ⚙  '
+  #prompt_segment 'red' '' ' ⚙ ⚡⚡⚡ ⚙  '
+  prompt_segment black white '%*'
 }
+
+prompt_dir() {
+  prompt_segment '#2ab392' black ' %~ '
+}
+
+typeset -aHg AGNOSTER_PROMPT_SEGMENTS=(
+    prompt_status
+    prompt_context
+    prompt_timestamp
+    prompt_virtualenv
+    prompt_dir
+    prompt_git
+    prompt_end
+)
 
