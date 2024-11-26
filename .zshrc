@@ -76,8 +76,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-source .bashrc.functions
-source .bashrc.variables
+source ~/.bashrc.functions
+source ~/.bashrc.variables
 
 # User configuration
 

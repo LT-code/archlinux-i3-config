@@ -31,7 +31,7 @@ autocmd("VimResized", {
 ----})
 
 
-vim.cmd "set shell=/bin/fish"
+vim.cmd "set shell=/bin/zsh"
 --vim.cmd "set spelllang=fr_fr spell"
 --vim.cmd ":setlocal spell spelllang=fr"
 vim.cmd "set relativenumber"

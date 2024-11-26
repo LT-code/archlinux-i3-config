@@ -32,6 +32,7 @@ fi
 mkdir -p "$project_path/.elixir_ls"
 
 docker run -i --rm \
+  $(cat $project_path/.elixir_ls_docker_options) \
   -v "$project_path:$project_path" \
   -v "/home/$USER/.mix/:/home/$USER/.mix/" \
   -v "/home/$USER/.local/share/nvim/mason:/home/$USER/.local/share/nvim/mason:ro" \
