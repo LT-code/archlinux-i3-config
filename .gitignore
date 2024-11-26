@@ -33,3 +33,4 @@
 !.config/fish/config.fish
 !.config/nvim/
 .config/nvim/lazy-lock.json
+.config/QtProject.conf
