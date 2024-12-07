@@ -308,7 +308,7 @@ bar {
 
 
 exec_always --no-startup-id light-locker --lock-after-screensaver=0 --lock-on-suspend --lock-on-lid --idle-hint # lightdm secure locker &
-exec_always --no-startup-id sleep 0.5; /usr/bin/sh ~/.screenlayout/setup.sh
+#exec_always --no-startup-id sleep 0.5; /usr/bin/sh ~/.screenlayout/setup.sh
 exec_always --no-startup-id xset r rate 200 80				# keyboard writing rate
 exec_always --no-startup-id xset dpms 0 0 300 &				# timeout for locker
 exec_always --no-startup-id xss-lock -- "playerctl pause; light-locker-command --lock" &	# lock after timeout
@@ -319,6 +319,7 @@ exec --no-startup-id ~/.config/i3blocks/script/battery/status.sh	# battery statu
 exec --no-startup-id nm-applet						# networkmanager
 exec --no-startup-id blueberry-tray
 exec --no-startup-id nextcloud
+exec --no-startup-id autorandr -c
 
 #exec --no-startup-ip xcalb -co 130 -a 					# baisse la consomation de l'ecran
 #exec --no-startup-id redshift						# temperature
@@ -371,7 +372,7 @@ for_window [class="Microsoft Teams - Preview"] move container to workspace $ws8
 for_window [title="Incrustation vidéo"] sticky enable
 
 for_window [class="Spotify"] move container to workspace $ws10
-#exec --no-startup-id /usr/share/spotify/spotify
+exec --no-startup-id spotify
 
 #for_window [class="Gnome-terminal"] move container to workspace $ws3
 
