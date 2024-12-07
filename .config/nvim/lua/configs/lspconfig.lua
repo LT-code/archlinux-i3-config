@@ -86,3 +86,27 @@ lspconfig.elixirls.setup {
   capabilities = nvlsp.capabilities,
 }
 
+
+lspconfig.ansiblels.setup({
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  on_new_config = function(new_config, root_dir)
+        -- Check if we're in an Ansible project by looking for `ansible.cfg` or related files
+        local function is_ansible_project(dir)
+            local ansible_files = { 'ansible.cfg', 'inventory', 'site.yml', 'main.yml' }
+            for _, file in ipairs(ansible_files) do
+                if vim.fn.filereadable(vim.fn.expand(dir .. '/' .. file)) == 1 then
+                    return true
+                end
+            end
+            return false
+        end
+
+        if not is_ansible_project(root_dir) then
+            new_config.autostart = false -- Prevent starting ansiblels if it's not an Ansible project
+        end
+    end,
+    filetypes = { "yaml", "yml", "j2" }, -- Restrict to YAML files
+    root_dir = lspconfig.util.root_pattern('ansible.cfg', '.git'), -- Use root markers for Ansible projects
+})

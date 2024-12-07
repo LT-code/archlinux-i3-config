@@ -34,7 +34,9 @@ M.mason = {
     "shellcheck",
     "phpactor",
     "cmake-language-server",
-    "clangd"
+    "clangd",
+    "ansible-language-server",
+    "ansible-lint"
   }
 }
 

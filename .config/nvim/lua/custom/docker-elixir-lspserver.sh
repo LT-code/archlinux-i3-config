@@ -31,8 +31,17 @@ fi
 
 mkdir -p "$project_path/.elixir_ls"
 
+ADDITIONAL_PATH=""
+ADDITIONAL_VOLUME_CONFIG="$project_path/.elixir_ls_docker_options"
+if [ -f "$ADDITIONAL_VOLUME_CONFIG" ]; then
+  while read p; do
+    ADDITIONAL_PATH="$ADDITIONAL_PATH -v $project_path/$p:$project_path/$p"
+  done <$ADDITIONAL_VOLUME_CONFIG
+  >&2 echo ADDITIONAL_PATH = $ADDITIONAL_PATH
+fi
+
 docker run -i --rm \
-  $(cat $project_path/.elixir_ls_docker_options) \
+  $ADDITIONAL_PATH \
   -v "$project_path:$project_path" \
   -v "/home/$USER/.mix/:/home/$USER/.mix/" \
   -v "/home/$USER/.local/share/nvim/mason:/home/$USER/.local/share/nvim/mason:ro" \
@@ -43,7 +52,6 @@ docker run -i --rm \
   $env_variables \
   -e ELIXIR_VER="$elixir_version" \
   -e PROJECT_PATH="$project_path" \
-  -e KBRW_REPO_BASE=git://git.priv.cloud.kbrwadventure.com/ \
   -e USER="$USER" \
   -e UID="$(id -u)" \
   -e GID="$(id -g)" \

@@ -6,7 +6,8 @@ msgTag="myvolume"
 
 # Query amixer for the current volume and whether or not the speaker is muted
 volume=$(amixer get Master | grep "Front Left:" | awk '{print $5}' | tr -d ']' | tr -d '[')
-mute="$(amixer -c 0 get Master | tail -1 | awk '{print $6}' | sed 's/[^a-z]*//g')"
+mute="$(amixer get Master | tail -1 | awk '{print $6}' | sed 's/[^a-z]*//g')"
+#mute="$(amixer -c 0 sget Master | tail -1 | awk '{print $6}' | sed 's/[^a-z]*//g')"
 if [[ $volume == "0%" || "$mute" == "off" ]]; then
     # Show the sound muted notification
     dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag " Volume muted" 
